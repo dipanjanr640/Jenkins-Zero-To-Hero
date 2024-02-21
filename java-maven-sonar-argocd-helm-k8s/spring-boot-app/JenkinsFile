@@ -25,13 +25,6 @@ pipeline {
         '''
       } 
     }
-    stage ('sonarqube analysis') {
-      steps {
-        withSonarQubeEnv('sonar-server') {
-         sh '''cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean verify sonar:sonar -Dsonar.projectName=sprintboot-app \
-         -Dsonar.projectKey=sprintboot-app'''
-        }
-      }      
-    }
+   
   }
 }
