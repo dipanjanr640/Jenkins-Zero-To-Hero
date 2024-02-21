@@ -21,10 +21,18 @@ pipeline {
     stage ('mvn build') {
       steps {
         sh '''
-        pwd
+        cd Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/spring-boot-app
+        mvn clean install 
         '''
       } 
     }
-   
+		 stage ('sonarqube analysis') {
+      steps {
+        withSonarQubeEnv('sonar-server') {
+         sh '''cd Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean verify sonar:sonar -Dsonar.projectName=sprintboot-app \
+         -Dsonar.projectKey=sprintboot-app'''
+        }
+      }      
+    }   
   }
 }
