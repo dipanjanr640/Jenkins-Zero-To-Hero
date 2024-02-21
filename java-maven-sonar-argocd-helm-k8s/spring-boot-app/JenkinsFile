@@ -23,6 +23,7 @@ pipeline {
         sh '''java-maven-sonar-argocd-helm-k8s/spring-boot-app
         mvn clean install '''
       } 
+    }
     stage ('sonarqube analysis') {
       steps {
         withSonarQubeEnv('sonar-server') {
@@ -32,4 +33,3 @@ pipeline {
       }      
     }
   } 
-}
