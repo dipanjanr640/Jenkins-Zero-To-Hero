@@ -30,8 +30,9 @@ pipeline {
     }
     stage ('trivy file scan') {
       steps {
-        sh "cd java-maven-sonar-argocd-helm-k8s/spring-boot-app"
-        sh "trivy fs . > tvfile.txt"
+        sh '''
+        cd java-maven-sonar-argocd-helm-k8s/spring-boot-app"
+        trivy fs . > tvfile.txt'''
       }
     }
     stage ('image build') {
@@ -45,7 +46,7 @@ pipeline {
     stage ('trivy image scan') {
       steps {
         sh '''
-        trivy image ${IMAGE_NAME}:${IMAGE_TAG} --scanner vuln --exit-code 0 > tvimage.txt
+        trivy image ${IMAGE_NAME}:${IMAGE_TAG} --scanners vuln --exit-code 0 > tvimage.txt
         '''
       }
     }
