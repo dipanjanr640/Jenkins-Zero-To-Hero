@@ -31,7 +31,7 @@ pipeline {
     stage ('trivy file scan') {
       steps {
         sh '''
-        cd java-maven-sonar-argocd-helm-k8s/spring-boot-app"
+        cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
         trivy fs . > tvfile.txt'''
       }
     }
