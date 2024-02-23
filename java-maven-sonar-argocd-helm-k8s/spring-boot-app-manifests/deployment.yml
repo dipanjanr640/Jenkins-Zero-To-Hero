@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: myacr1001.azurecr.io/sprint-boot-app:replaceImageTag
+        image: myacr1001.azurecr.io/sprint-boot-app:1.0-20
         ports:
         - containerPort: 8081
