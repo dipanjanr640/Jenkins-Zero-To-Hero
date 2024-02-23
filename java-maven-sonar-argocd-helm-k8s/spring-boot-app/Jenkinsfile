@@ -38,7 +38,7 @@ pipeline {
       steps {
         sh "cd java-maven-sonar-argocd-helm-k8s/spring-boot-app"
         sh '''
-        docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+        docker build -t $IMAGE_NAME:$IMAGE_TAG .
         '''
       }
     }
