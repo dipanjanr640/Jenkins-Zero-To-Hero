@@ -7,17 +7,17 @@ pipeline {
   environment {
     SCANNER_HOME = tool 'sonar-scanner'
   }
-  stages {
-    stage ('clear ws') {
-      steps {
-        cleanWs()
-      }
-    }
-    stage ('checkout from git') {
-      steps {
-        sh " git clone https://github.com/dipanjanr640/Jenkins-Zero-To-Hero.git "
-      }      
-    }
+  //stages {
+  //  stage ('clear ws') {
+  //    steps {
+  //      cleanWs()
+  //    }
+  //  }
+   // stage ('checkout from git') {
+   //   steps {
+   //     sh " git clone https://github.com/dipanjanr640/Jenkins-Zero-To-Hero.git "
+   //   }      
+   // }
     stage ('mvn build') {
       steps {
         sh '''
@@ -33,11 +33,6 @@ pipeline {
          -Dsonar.projectKey=sprintboot-app'''
         }
       }      
-    }
-    stage('quality gate') {
-      steps {
-        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-        }
-      }    	
+    }   	
   }
 }
