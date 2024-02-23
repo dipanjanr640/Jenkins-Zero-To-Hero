@@ -74,7 +74,7 @@ pipeline {
       steps {
         sh '''
         git config --global user.name "dipanjanr640"
-        git config --globar user.email "dipanjanr640@gmail.com"
+        git config --global user.email "dipanjanr640@gmail.com"
         git add deployment.yml
         git commit -m "update manifest file with build no ${BUILD_NUMBER}"
         '''
