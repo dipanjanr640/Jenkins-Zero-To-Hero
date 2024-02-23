@@ -52,7 +52,8 @@ pipeline {
     }
     stage ('image push to acr') {
       steps {
-        azureCLI commands: [[exportVariablesString: '', script: 'az acr login --name myacr1001.azurecr.io'], [exportVariablesString: '', script: 'docker push -t ${IMAGE_NAME}:${IMAGE_TAG}']], principalCredentialId: 'AzureSP'
+        azureCLI commands: [[exportVariablesString: '', script: 'az acr login --name myacr1001.azurecr.io']], principalCredentialId: 'AzureSP'
+        sh "docker push -t ${IMAGE_NAME}:${IMAGE_TAG}"
       }
     }
     stage ('delete image') {
