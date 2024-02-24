@@ -19,5 +19,5 @@ spec:
         image: myacr1001.azurecr.io/sprint-boot-app:1.0-20
         ports:
         - containerPort: 8081
-      imagepullSecrets:
+      imagePullSecrets:
         - name: acr-image-secret
