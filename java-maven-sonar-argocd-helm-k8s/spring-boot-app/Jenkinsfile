@@ -83,7 +83,8 @@ pipeline {
         cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
         git config --global user.name "dipanjanr640"
         git config --global user.email "dipanjanr640@gmail.com"
-        sed -i 's/replaceImageTag/${IMAGE_TAG}/g' deployment.yml
+        sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+        cat deployment.yml
         git add deployment.yml
         git commit -m "update manifest file with build no ${BUILD_NUMBER}"
         '''
