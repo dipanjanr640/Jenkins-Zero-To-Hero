@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-spring-boot-app
-        image: myacr1001.azurecr.io/sprint-boot-app:1.0-41
+        image: myacr1001.azurecr.io/sprint-boot-app:1.0-42
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
