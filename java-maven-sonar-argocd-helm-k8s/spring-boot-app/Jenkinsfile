@@ -12,14 +12,14 @@ pipeline {
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
   }
   stages {
-    stage ('checkout') {
-      steps {
-        sh '''
-        git checkout main
-        git pull origin main
-        '''
-      } 
-    }
+    // stage ('checkout') {
+    //   steps {
+    //     sh '''
+    //     git checkout main
+    //     git pull origin main
+    //     '''
+    //   } 
+    // }
     stage ('mvn build') {
       steps {
         sh '''
@@ -83,7 +83,7 @@ pipeline {
         cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
         git config --global user.name "dipanjanr640"
         git config --global user.email "dipanjanr640@gmail.com"
-        git add deployment.yml
+        git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
         git commit -m "update manifest file with build no ${BUILD_NUMBER}"
         '''
         withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
