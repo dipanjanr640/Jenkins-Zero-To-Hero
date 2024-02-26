@@ -80,9 +80,6 @@ pipeline {
     stage ('github push') {
       steps {
         sh '''
-        
-        git checkout main
-        git pull origin main
         cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
         git config --global user.name "dipanjanr640"
         git config --global user.email "dipanjanr640@gmail.com"
