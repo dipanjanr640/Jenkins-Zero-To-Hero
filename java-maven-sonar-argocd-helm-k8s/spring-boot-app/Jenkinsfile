@@ -72,7 +72,8 @@ pipeline {
     stage ('github push') {
       steps {
         sh '''
-        
+        cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
+        git checkout main
         git config --global user.name "dipanjanr640"
         git config --global user.email "dipanjanr640@gmail.com"
         git add deployment.yml
