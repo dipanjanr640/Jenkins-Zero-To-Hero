@@ -84,7 +84,6 @@ pipeline {
         git config --global user.name "dipanjanr640"
         git config --global user.email "dipanjanr640@gmail.com"
         git add deployment.yml
-        git status
         git commit -m "update manifest file with build no ${BUILD_NUMBER}"
         '''
         withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
