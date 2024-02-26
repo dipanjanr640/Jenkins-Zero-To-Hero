@@ -69,21 +69,22 @@ pipeline {
         sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
       }
     }
-    stage("Update the Deployment file") {
-            steps {
-                sh """
-                cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
-                sed -i 's/replaceImageTag/${IMAGE_TAG}/g' deployment.yml
-                   """
-      }
-    }
+    // stage("Update the Deployment file") {
+    //         steps {
+    //             sh """
+    //             cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
+                
+    //                """
+    //   }
+    // }
     stage ('github push') {
       steps {
         sh '''
         cd java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
         git config --global user.name "dipanjanr640"
         git config --global user.email "dipanjanr640@gmail.com"
-        git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+        sed -i 's/replaceImageTag/${IMAGE_TAG}/g' deployment.yml
+        git add deployment.yml
         git commit -m "update manifest file with build no ${BUILD_NUMBER}"
         '''
         withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
