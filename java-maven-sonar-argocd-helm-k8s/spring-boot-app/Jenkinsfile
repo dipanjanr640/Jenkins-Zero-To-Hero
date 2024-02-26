@@ -87,8 +87,8 @@ pipeline {
         git add deployment.yml
         git commit -m "update manifest file with build no ${BUILD_NUMBER}"
         '''
-        withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-        sh "git push https://github.com/dipanjanr640/Jenkins-Zero-To-Hero.git HEAD:main"
+        withCredentials([usernameColonPassword(credentialsId: 'github', variable: 'git-token')]) {
+          sh "git push https://github.com/dipanjanr640/Jenkins-Zero-To-Hero.git HEAD:main"
         }
       }
     }
